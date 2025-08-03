@@ -37,18 +37,37 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Center(child: Text(title)),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
           const SizedBox(height: 20),
-              CircleAvatar(backgroundImage: AssetImage('assets/images/profile1.jpg'),
-                radius: 110,
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: const LinearGradient(
+                colors: [Colors.black, Colors.purple],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
+            ),
+            padding: const EdgeInsets.all(5),
+            child: Container(
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
+              ),
+              padding: const EdgeInsets.all(3),
+              child: const CircleAvatar(
+                backgroundImage: AssetImage('assets/images/profile1.jpg'),
+                radius: 107,
+              ),
+            ),
+          ),
           const Padding(
               padding: EdgeInsets.all(30),
-              child: Center(child: Text('Mr. Phuwakorn Phaschayanont',
+              child: Center(child: Text('PHUWAKORN PHASCHAYANONT',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ))),
           ElevatedButton(

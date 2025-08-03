@@ -7,42 +7,72 @@ class Page3Screen extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var title = [
+      'English',
+      'Excel',
+      'Python',
+      'C++',
+      'JavaScript',
+      'MySQL',
+    ];
+    var subtitle = ['★★★★☆', '★★★★★', '★★★★★', '★★★★★', '★★★★☆', '★★★★☆'];
+    var image = [
+      'assets/images/english.jpg',
+      'assets/images/excel.png',
+      'assets/images/python.png',
+      'assets/images/c++.png',
+      'assets/images/java.jpg',
+      'assets/images/mysql.jpg',
+    ];
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ความสามารถพิเศษ'),
-      ),
+      appBar: AppBar(title: const Text('ความสามารถพิเศษ')),
       body: Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            const SizedBox(height: 10),
-            CircleAvatar(backgroundImage: AssetImage('assets/images/profile.jpg'),
-              radius: 110,
+            Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: const LinearGradient(
+                  colors: [Colors.black, Colors.purple],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+              padding: const EdgeInsets.all(5),
+              child: Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+                padding: const EdgeInsets.all(3),
+                child: const CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/profile1.jpg'),
+                  radius: 107,
+                ),
+              ),
             ),
-            const SizedBox(height: 30),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Excel : ดี'),
-            ),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Word : ดี'),
-            ),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text('PowerPoint : ดี'),
-            ),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Python : ดี'),
-            ),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text('C++ : ดี'),
-            ),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text('JavaScript : ดี'),
+            const SizedBox(height: 23),
+            Expanded(
+              child: ListView.builder(
+                itemCount: title.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(title[index]),
+                      subtitle: Text(
+                        subtitle[index],
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      leading: CircleAvatar(
+                        backgroundImage: AssetImage(image[index]),
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
